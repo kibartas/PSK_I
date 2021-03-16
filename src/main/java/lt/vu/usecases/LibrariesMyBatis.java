@@ -34,8 +34,7 @@ public class LibrariesMyBatis {
     }
 
     @Transactional
-    public String createLibrary() {
+    public void createLibrary() {
         libraryMapper.insert(libraryToCreate);
-        return "/myBatis/libraries?faces-redirect=true";
     }
 }

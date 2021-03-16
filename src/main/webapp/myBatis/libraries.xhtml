@@ -14,7 +14,10 @@
     </ol>
     <h:form>
         <h:inputText value="#{librariesMyBatis.libraryToCreate.address}" required="true" />
-        <h:commandButton value="Add new library" action="#{librariesMyBatis.createLibrary}" />
+        <h:commandButton value="Add new library"
+                         actionListener="#{librariesMyBatis.createLibrary}"
+                         action="libraries?faces-redirect=true"
+        />
     </h:form>
     <h:link value="Back to index" outcome="/index"/>
 </h:body>

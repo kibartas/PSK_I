@@ -15,7 +15,12 @@
     </ol>
     <h:form>
         <h:inputText a:placeholder="name" value="#{libraryUsers.userToCreate.name}" required="true" />
-        <h:commandButton value="Add user to the library" action="#{libraryUsers.createUser}" >
+        <h:commandButton
+                value="Add user to the library"
+                actionListener="#{libraryUsers.createUser}"
+                action="#{'users?faces-redirect=true&amp;libraryId='
+                .concat(libraryUsers.library.id)}"
+        >
             <f:param name="libraryId" value="#{libraryUsers.library.id}" />
         </h:commandButton>
     </h:form>

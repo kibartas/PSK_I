@@ -37,9 +37,8 @@ public class Libraries {
     }
 
     @Transactional
-    public String createLibrary() {
+    public void createLibrary() {
         this.librariesDAO.persist(libraryToCreate);
-        return "index?faces-redirect=true";
     }
 
     private void loadAllLibraries(){

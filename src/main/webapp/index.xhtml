@@ -14,7 +14,10 @@
     </ol>
     <h:form style="display: flex">
         <h:inputText value="#{libraries.libraryToCreate.address}" required="true" />
-        <h:commandButton value="Add new library" action="#{libraries.createLibrary}" />
+        <h:commandButton value="Add new library"
+                         action="index?faces-redirect=true"
+                         actionListener="#{libraries.createLibrary}"
+        />
     </h:form>
     <h:form style="display: flex">
         <h:inputText required="true" value="#{libraries.queriedAddress}"/>
@@ -28,10 +31,5 @@
         </ui:repeat>
     </ol>
     <h:link outcome="myBatis/libraries" value="MyBatis implementation"/>
-    <br/>
-    <br/>
-    #{libraries.getClass().name}
-    <br/>
-    #{first.transact()}
 </h:body>
 </html>

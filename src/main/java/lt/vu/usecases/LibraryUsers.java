@@ -43,11 +43,10 @@ public class LibraryUsers implements Serializable {
 
     @Transactional
     @LoggedInvocation
-    public String createUser() {
+    public void createUser() {
         HashSet<Library> libraries = new HashSet<Library>();
         libraries.add(library);
         userToCreate.setLibraries(libraries);
         usersDAO.persist(userToCreate);
-        return "users?faces-redirect=true&libraryId=" + this.library.getId();
     }
 }
