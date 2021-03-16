@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="lt.vu.mybatis.model.Author" alias="Author"/>
+        <typeAlias type="lt.vu.mybatis.model.Book" alias="Book"/>
+        <typeAlias type="lt.vu.mybatis.model.Library" alias="Library"/>
+        <typeAlias type="lt.vu.mybatis.model.User" alias="User"/>
+        <typeAlias type="lt.vu.mybatis.model.Copy" alias="Copy"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="MANAGED"/>
+            <dataSource type="JNDI">
+                <property name="data_source" value="LibrariesDataSource"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mybatis.xml/AuthorMapper.xml"/>
+        <mapper resource="mybatis.xml/BookMapper.xml"/>
+        <mapper resource="mybatis.xml/LibraryMapper.xml"/>
+        <mapper resource="mybatis.xml/UserMapper.xml"/>
+        <mapper resource="mybatis.xml/CopyMapper.xml"/>
+    </mappers>
+</configuration>

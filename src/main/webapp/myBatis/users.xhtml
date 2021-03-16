@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Users registered in #{libraryUsers.library.address} library:</h2>
+    <ol>
+        <ui:repeat value="#{libraryUsers.library.users}" var="user">
+            <li>#{user.name} #{user.surname}</li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{libraryUsers.userToCreate.name}" required="true" />
+        <h:commandButton value="Add user to the library" action="#{libraryUsers.createUser}" >
+            <f:param name="libraryId" value="#{libraryUsers.library.id}" />
+        </h:commandButton>
+    </h:form>
+    <h:link outcome="/myBatis/libraries" value="Back to libraries page"/>
+</h:body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Libraries:</h2>
+    <ol>
+        <ui:repeat value="#{libraries.allLibraries}" var="library">
+            <li><h:outputText value="#{library.address}"/></li>
+        </ui:repeat>
+    </ol>
+    <h:form style="display: flex">
+        <h:inputText value="#{libraries.libraryToCreate.address}" required="true" />
+        <h:commandButton value="Add new library" action="#{libraries.createLibrary}" />
+    </h:form>
+    <h:form style="display: flex">
+        <h:inputText required="true" value="#{libraries.queriedAddress}"/>
+        <h:commandButton value="Search for library by address" action="#{libraries.findLibrary}"/>
+    </h:form>
+    <h3>Queried Libraries:</h3>
+    <h4>Amount of libraries: #{libraries.queriedLibraries.size() == 0 ? 0 : libraries.queriedLibraries.size()}</h4>
+    <ol>
+        <ui:repeat value="#{libraries.queriedLibraries}" var="library">
+            <li><h:outputText value="#{library.address}"/></li>
+        </ui:repeat>
+    </ol>
+    <h:link outcome="myBatis/libraries" value="MyBatis implementation"/>
+    <br/>
+    <br/>
+    #{libraries.getClass().name}
+    <br/>
+    #{first.transact()}
+</h:body>
+</html>
