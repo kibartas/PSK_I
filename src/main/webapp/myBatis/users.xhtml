@@ -10,7 +10,14 @@
     <h2>Users registered in #{libraryUsers.library.address} library:</h2>
     <ol>
         <ui:repeat value="#{libraryUsers.library.users}" var="user">
-            <li>#{user.name} #{user.surname}</li>
+            <li>#{user.name} #{user.surname} #{user.id}</li>
+            <h:form>
+                <h:commandButton actionListener="#{libraryUsers.deleteUser(user.id)}"
+                                 action="#{'users?faces-redirect=true&amp;libraryId='
+                                .concat(libraryUsers.library.id)}">
+                 <f:param name="libraryId" value="#{libraryUsers.library.id}" />
+                </h:commandButton>
+            </h:form>
         </ui:repeat>
     </ol>
     <h:form>

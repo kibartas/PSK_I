@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lt.vu.mybatis.model.Library;
 import lt.vu.mybatis.dao.LibraryMapper;
-import lt.vu.mybatis.dao.TeamMapper;
-import lt.vu.mybatis.model.Team;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;

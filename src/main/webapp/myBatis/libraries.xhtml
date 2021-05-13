@@ -9,7 +9,7 @@
     <h2>Libraries:</h2>
     <ol>
         <ui:repeat value="#{librariesMyBatis.allLibraries}" var="library">
-            <li><h:link value="#{library.address}" outcome="users?libraryId=#{library.id}" /></li>
+            <li><h:link value="#{library.address}"  outcome="users?libraryId=#{library.id}" /></li>
         </ui:repeat>
     </ol>
     <h:form>

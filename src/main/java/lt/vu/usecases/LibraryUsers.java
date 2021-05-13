@@ -33,6 +33,7 @@ public class LibraryUsers implements Serializable {
     @Getter @Setter
     private User userToCreate = new User();
 
+
     @PostConstruct
     public void init() {
         Map<String, String> requestParameters =
@@ -48,5 +49,11 @@ public class LibraryUsers implements Serializable {
         libraries.add(library);
         userToCreate.setLibraries(libraries);
         usersDAO.persist(userToCreate);
+    }
+
+    @Transactional
+    public void deleteUser(int id) {
+        User user = usersDAO.findOne(id);
+        usersDAO.delete(user);
     }
 }
