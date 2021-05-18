@@ -21,6 +21,12 @@ public class Library implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Version
+    private Integer version;
+
+    @ManyToMany(mappedBy = "libraries")
+    private Set<Book> books;
+
     @Column(name = "ADDRESS")
     private String address;
 

@@ -3,6 +3,7 @@ package lt.vu.entities;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.Past;
 import java.io.Serializable;
@@ -19,6 +20,11 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @JsonbTransient
+    @Version
+    private Integer version;
+
+    @JsonbTransient
     @ManyToMany
     @JoinTable(name="USER_LIBRARIES")
     private Set<Library> libraries;

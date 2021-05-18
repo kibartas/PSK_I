@@ -1,14 +1,10 @@
 package lt.vu.persistence;
 
-import lombok.Getter;
-import lombok.Setter;
 import lt.vu.entities.Library;
-import lt.vu.entities.Team;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped

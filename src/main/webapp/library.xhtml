@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Users registered in #{libraryUsecase.library.address} library:</h2>
+    <ol>
+        <ui:repeat value="#{libraryUsecase.library.users}" var="user">
+            <li><h:link value="#{user.name} #{user.surname}"  outcome="user?userId=#{user.id}" /></li>
+            <h:form>
+                <h:commandButton actionListener="#{libraryUsecase.deleteUser(user.id)}"
+                                 action="#{'library?faces-redirect=true&amp;libraryId='
+                                .concat(libraryUsecase.library.id)}">
+                 <f:param name="libraryId" value="#{libraryUsecase.library.id}" />
+                </h:commandButton>
+            </h:form>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{libraryUsecase.userToCreate.name}" required="true" />
+        <h:commandButton
+                value="Add user to the library"
+                actionListener="#{libraryUsecase.createUser}"
+                action="#{'library?faces-redirect=true&amp;libraryId='
+                .concat(libraryUsecase.library.id)}"
+        >
+            <f:param name="libraryId" value="#{libraryUsecase.library.id}" />
+        </h:commandButton>
+    </h:form>
+    <h2>Books in #{libraryUsecase.library.address}:</h2>
+    <ol>
+        <ui:repeat value="#{libraryUsecase.library.books}" var="book">
+            <h3>#{book.title}</h3>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:outputText value="Your book recommendation is: #{getBookRecommendation.bookRecommendationResults}"/>
+        <br/>
+        <h:commandButton
+                value="Get a book recommendation"
+                disabled="#{getBookRecommendation.recommendationInProgress}"
+                actionListener="#{getBookRecommendation.getBookRecommendation}"
+                action="#{'library?faces-redirect=true&amp;libraryId='
+                .concat(libraryUsecase.library.id)}"
+        >
+            <f:param name="libraryId" value="#{libraryUsecase.library.id}" />
+        </h:commandButton>
+    </h:form>
+    <h:link outcome="/index" value="Back to libraries page"/>
+</h:body>
+</html>

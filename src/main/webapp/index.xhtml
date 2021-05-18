@@ -9,27 +9,15 @@
     <h2>Libraries:</h2>
     <ol>
         <ui:repeat value="#{libraries.allLibraries}" var="library">
-            <li><h:outputText value="#{library.address}"/></li>
+            <li><h:link value="#{library.address}"  outcome="library?libraryId=#{library.id}" /></li>
         </ui:repeat>
     </ol>
-    <h:form style="display: flex">
+    <h:form>
         <h:inputText value="#{libraries.libraryToCreate.address}" required="true" />
         <h:commandButton value="Add new library"
-                         action="index?faces-redirect=true"
                          actionListener="#{libraries.createLibrary}"
+                         action="libraries?faces-redirect=true"
         />
     </h:form>
-    <h:form style="display: flex">
-        <h:inputText required="true" value="#{libraries.queriedAddress}"/>
-        <h:commandButton value="Search for library by address" action="#{libraries.findLibrary}"/>
-    </h:form>
-    <h3>Queried Libraries:</h3>
-    <h4>Amount of libraries: #{libraries.queriedLibraries.size() == 0 ? 0 : libraries.queriedLibraries.size()}</h4>
-    <ol>
-        <ui:repeat value="#{libraries.queriedLibraries}" var="library">
-            <li><h:outputText value="#{library.address}"/></li>
-        </ui:repeat>
-    </ol>
-    <h:link outcome="myBatis/libraries" value="MyBatis implementation"/>
 </h:body>
 </html>

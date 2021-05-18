@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -12,14 +13,16 @@ import java.util.Map;
 
 import lombok.Getter;
 import lombok.Setter;
+import lt.vu.entities.Book;
 import lt.vu.entities.Library;
 import lt.vu.entities.User;
 import lt.vu.interceptors.LoggedInvocation;
+import lt.vu.persistence.BooksDAO;
 import lt.vu.persistence.LibrariesDAO;
 import lt.vu.persistence.UsersDAO;
 
 @Model
-public class LibraryUsers implements Serializable {
+public class LibraryUsecase implements Serializable {
 
     @Inject
     private LibrariesDAO librariesDAO;
@@ -28,7 +31,7 @@ public class LibraryUsers implements Serializable {
     private UsersDAO usersDAO;
 
     @Getter @Setter
-    private Library library;
+    private lt.vu.entities.Library library;
 
     @Getter @Setter
     private User userToCreate = new User();
@@ -45,7 +48,7 @@ public class LibraryUsers implements Serializable {
     @Transactional
     @LoggedInvocation
     public void createUser() {
-        HashSet<Library> libraries = new HashSet<Library>();
+        HashSet<lt.vu.entities.Library> libraries = new HashSet<lt.vu.entities.Library>();
         libraries.add(library);
         userToCreate.setLibraries(libraries);
         usersDAO.persist(userToCreate);

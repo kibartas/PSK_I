@@ -9,4 +9,9 @@
     <interceptors>
         <class>lt.vu.interceptors.MethodLogger</class>
     </interceptors>
+
+    <decorators>
+        <class>lt.vu.decorators.UserFixerDecorator</class>
+    </decorators>
+
 </beans>

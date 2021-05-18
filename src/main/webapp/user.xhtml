@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>User #{libraryUser.userToUpdate.name}:</h2>
+    <h3 style="color: red">#{errorComponent.showError()}</h3>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{libraryUser.userToUpdate.name}" required="true" />
+        <h:commandButton
+                value="Change user's name"
+                actionListener="#{libraryUser.updateUserName}"
+                action="#{'user?faces-redirect=true&amp;userId='
+                .concat(libraryUser.userToUpdate.id)}"
+        >
+            <f:param name="userId" value="#{libraryUser.userToUpdate.id}" />
+        </h:commandButton>
+    </h:form>
+    <h:link outcome="/library" value="Back to library page"/>
+</h:body>
+</html>

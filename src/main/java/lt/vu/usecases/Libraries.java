@@ -38,6 +38,11 @@ public class Libraries {
 
     @Transactional
     public void createLibrary() {
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         this.librariesDAO.persist(libraryToCreate);
     }
 

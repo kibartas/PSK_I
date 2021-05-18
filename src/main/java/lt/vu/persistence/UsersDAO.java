@@ -1,18 +1,18 @@
 package lt.vu.persistence;
 
-import lt.vu.entities.Player;
 import lt.vu.entities.User;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 @ApplicationScoped
 public class UsersDAO {
 
     @Inject
     private EntityManager em;
+
+    public void flush() { em.flush(); }
 
     public void persist(User user){
         this.em.persist(user);
