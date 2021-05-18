@@ -15,7 +15,11 @@ public class UserFixerDecorator implements UserFixer {
     UserFixer userFixer;
 
     @Override
-    public void fixUserName(User user) {
-        userFixer.fixUserName(user);
+    public User fixUserName(User user) {
+        if (user.getId() == 0) {
+           return user;
+        }
+        return userFixer.fixUserName(user);
+
     }
 }

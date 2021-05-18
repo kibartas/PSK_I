@@ -14,4 +14,7 @@
         <class>lt.vu.decorators.UserFixerDecorator</class>
     </decorators>
 
+    <alternatives>
+        <class>lt.vu.bookRecommendation.RandomBookRecommendationComponent</class>
+    </alternatives>
 </beans>
