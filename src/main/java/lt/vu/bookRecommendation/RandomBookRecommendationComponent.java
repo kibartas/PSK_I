@@ -35,7 +35,6 @@ public class RandomBookRecommendationComponent extends BookRecommendationCompone
 
 
     @Override
-    @Asynchronous
     public CompletableFuture<String> findBookRecommendation() {
         Random rng = new Random();
         CompletableFuture<String> completableFuture = new CompletableFuture<String>();

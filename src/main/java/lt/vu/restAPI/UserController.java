@@ -45,7 +45,7 @@ public class UserController {
         _user.setAddress(user.getAddress());
         _user.setDateOfBirth(user.getDateOfBirth());
         em.merge(_user);
-        return Response.ok(user).build();
+        return Response.ok(_user).build();
     }
 
 
